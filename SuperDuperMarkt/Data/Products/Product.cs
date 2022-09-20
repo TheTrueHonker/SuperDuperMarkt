@@ -15,6 +15,7 @@ namespace SuperDuperMarkt.Data.Products
         public float FixPrice { get; protected set; }
         public DateTime DateCreated { get; protected set; }
         private int dailyQualityModifier;
+        private int startingQuality;
         
 
         protected Product(string type, string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
@@ -22,6 +23,7 @@ namespace SuperDuperMarkt.Data.Products
             Type = type;
             Description = description;
             Quality = quality;
+            startingQuality = quality;
             DueDate = dueDate;
             FixPrice = fixPrice;
             DateCreated = dateCreated;
@@ -33,6 +35,7 @@ namespace SuperDuperMarkt.Data.Products
             Type = type;
             Description = description;
             Quality = quality;
+            startingQuality = quality;
             DueDate = dueDate;
             FixPrice = fixPrice;
             DateCreated = DateTime.Now;
@@ -44,6 +47,7 @@ namespace SuperDuperMarkt.Data.Products
             Type = type;
             Description = description;
             Quality = quality;
+            startingQuality = quality;
             DueDate = dateCreated.AddDays(dueInDays);
             FixPrice = fixPrice;
             DateCreated = dateCreated;
@@ -55,6 +59,7 @@ namespace SuperDuperMarkt.Data.Products
             Type = type;
             Description = description;
             Quality = quality;
+            startingQuality = quality;
             FixPrice = fixPrice;
             DateCreated = DateTime.Now;
             DueDate = DateCreated.AddDays(dueInDays);
@@ -101,7 +106,7 @@ namespace SuperDuperMarkt.Data.Products
         public virtual int UpdateQuality(DateTime currentDateTime)
         {
             var daysInBetween = currentDateTime.Subtract(DateCreated);
-            Quality -= daysInBetween.Days * dailyQualityModifier;
+            Quality = startingQuality - (daysInBetween.Days * dailyQualityModifier);
             return Quality;
         }
 
