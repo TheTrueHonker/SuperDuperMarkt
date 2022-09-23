@@ -1,4 +1,5 @@
 ﻿using SuperDuperMarkt.Data;
+using SuperDuperMarkt.Data.ProductImports;
 using SuperDuperMarkt.Data.Products;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,14 @@ namespace SuperDuperMarkt
             };
 
             var range = ProductRange.GetProductRange();
-            range.ImportRangeList(products);
+
+            CSVImporter importer = new CSVImporter("./Data/Files/products.csv");
+            range.ImportRangeList(importer);
             range.PrintRangeForDate(DateTime.Now);
             for(int i = 1; i <= 5; i++)
             {
                 range.PrintRangeForDate(DateTime.Now.AddDays(i));
             }
-            
         }
     }
 }

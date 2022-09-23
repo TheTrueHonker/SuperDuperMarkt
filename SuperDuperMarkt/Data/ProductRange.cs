@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SuperDuperMarkt.Data.ProductImports;
 using SuperDuperMarkt.Data.Products;
 
 namespace SuperDuperMarkt.Data
@@ -46,6 +47,11 @@ namespace SuperDuperMarkt.Data
         public void ImportRangeList(List<Product> newProducts)
         {
             range = newProducts;
+        }
+
+        public void ImportRangeList(IProductImport productImport)
+        {
+            range = productImport.GetProducts();
         }
     }
 }

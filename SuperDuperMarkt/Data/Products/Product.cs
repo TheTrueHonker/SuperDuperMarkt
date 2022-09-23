@@ -8,7 +8,6 @@ namespace SuperDuperMarkt.Data.Products
     {
         private const float QUALITY_PRICE_MODIFIER = 0.1f;
 
-        public string Type { get; protected set; }
         public string Description { get; protected set; }
         public int Quality { get; protected set; }
         public DateTime DueDate { get; protected set; }
@@ -18,9 +17,8 @@ namespace SuperDuperMarkt.Data.Products
         private int startingQuality;
         
 
-        protected Product(string type, string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
+        protected Product(string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
         {
-            Type = type;
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -30,9 +28,8 @@ namespace SuperDuperMarkt.Data.Products
             this.dailyQualityModifier = dailyQualityModifier;
         }
 
-        protected Product(string type, string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier)
+        protected Product(string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier)
         {
-            Type = type;
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -42,9 +39,8 @@ namespace SuperDuperMarkt.Data.Products
             this.dailyQualityModifier = dailyQualityModifier;
         }
 
-        protected Product(string type, string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
+        protected Product(string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
         {
-            Type = type;
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -54,9 +50,8 @@ namespace SuperDuperMarkt.Data.Products
             this.dailyQualityModifier = dailyQualityModifier;
         }
 
-        protected Product(string type, string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier)
+        protected Product(string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier)
         {
-            Type = type;
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -82,7 +77,7 @@ namespace SuperDuperMarkt.Data.Products
             
             var stringBuilder = new StringBuilder();
             stringBuilder.Append("Type: ");
-            stringBuilder.Append(Type);
+            stringBuilder.Append(this.GetType().Name);
             stringBuilder.Append(", Description: ");
             stringBuilder.Append(Description);
             stringBuilder.Append(", Quality: ");
