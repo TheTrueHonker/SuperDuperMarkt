@@ -32,7 +32,8 @@ namespace SuperDuperMarkt.Data
                 if(!product.IsQualityGood())
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(product.ToString());
+                    Console.Write(product.ToString());
+                    Console.WriteLine(" (Must be disposed of)");
                     Console.ForegroundColor = ConsoleColor.Gray;
                 } else
                 {
