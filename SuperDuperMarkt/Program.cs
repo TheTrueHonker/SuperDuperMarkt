@@ -8,7 +8,7 @@ namespace SuperDuperMarkt
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var range = ProductRange.GetProductRange();
             Console.WriteLine("Import from CSV-File? (y/n)");
