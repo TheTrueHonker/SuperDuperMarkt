@@ -1,4 +1,4 @@
 ﻿Type,Description,Quality,DueDate,DueInDays,FixPrice,DailyQualityModifier,DateCreated
-Cheese,Blauschimmel,50,,50,5.79,1,
+Cheese,Blauschimmel,50,,50,"5,79",1,
 Cheese,Cheddar,50,,49,2,1,23.09.2022
-Wine,Green Wine,2,,,78.9,,
+Wine,Green Wine,2,,,"78,9",,
