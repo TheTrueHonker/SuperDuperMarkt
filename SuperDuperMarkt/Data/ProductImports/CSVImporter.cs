@@ -1,16 +1,13 @@
 ﻿using SuperDuperMarkt.Data.Products;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Text;
 
 namespace SuperDuperMarkt.Data.ProductImports
 {
     class CSVImporter : IProductImport
     {
         private const string CSV_HEADER = "Type,Description,Quality,DueDate,DueInDays,FixPrice,DailyQualityModifier,DateCreated";
-        private const string ASSEMBLY_CLASS_NAME = "SuperDuperMarkt.Data.Products.{0}, SuperDuperMarkt";
 
         private string path;
 
