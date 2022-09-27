@@ -133,6 +133,7 @@ namespace SuperDuperMarkt.Data.ProductImports
                     }
                 }
             }
+            dict.Add((CSV_Parameter)currentParameter, parameter);
             return dict;
         }
     }
