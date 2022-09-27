@@ -17,6 +17,20 @@ namespace SuperDuperMarkt.Data.ProductImports
             this.path = path;
         }
 
+        public static CSVImporter CreateCSVImporterWithDialog()
+        {
+            string path;
+            do
+            {
+                Console.WriteLine("Please enter a valid path to a csv-file:");
+                path = Console.ReadLine();
+                if (!File.Exists(path))
+                    Console.WriteLine($"File does not exist: \"{path}\"");
+
+            } while (!File.Exists(path));
+            return new CSVImporter(path);
+        }
+
         public List<Product> GetProducts()
         {
             if (!File.Exists(path))
