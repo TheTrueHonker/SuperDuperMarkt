@@ -92,11 +92,22 @@ namespace SuperDuperMarkt.Data.Products
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Gets the calculated price by using the formula "FixPrice + 0,1 * Quality".
+        /// The price is rounded to 2 decimal points.
+        /// </summary>
+        /// <returns>The price based on the fix price and the quality of this product.</returns>
         public virtual float GetPrice()
         {
             return MathF.Round(FixPrice + QUALITY_PRICE_MODIFIER * Quality, 2);
         }
 
+        /// <summary>
+        /// Updates the quality based on new <see cref="DateTime"/>.
+        /// Saves the updated value to <see cref="Quality"/>.
+        /// </summary>
+        /// <param name="currentDateTime">The <see cref="DateTime"/> the quality has to be updated for.</param>
+        /// <returns>The updated <see cref="Quality"/></returns>
         public virtual int UpdateQuality(DateTime currentDateTime)
         {
             var daysInBetween = currentDateTime.Subtract(DateCreated);
@@ -104,6 +115,10 @@ namespace SuperDuperMarkt.Data.Products
             return Quality;
         }
 
+        /// <summary>
+        /// Determins whether the quality of this product is still good or not.
+        /// </summary>
+        /// <returns>A <see cref="bool"/> whether this product is still good or not.</returns>
         public abstract bool IsQualityGood();
     }
 }
