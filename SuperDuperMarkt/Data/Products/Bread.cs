@@ -23,7 +23,7 @@ namespace SuperDuperMarkt.Data.Products
             return false;
         }
 
-        public override void CheckProduct()
+        protected override void CheckProduct()
         {
         }
     }

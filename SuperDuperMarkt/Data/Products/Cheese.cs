@@ -24,7 +24,7 @@ namespace SuperDuperMarkt.Data.Products
             return true;
         }
 
-        public override void CheckProduct()
+        protected override void CheckProduct()
         {
             if (DueInDays < 50 || DueInDays > 100)
                 throw new Exception("Due In Days Parameter must be between 50 and 100 inclusive");

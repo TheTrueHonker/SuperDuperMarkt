@@ -40,7 +40,7 @@ namespace SuperDuperMarkt.Data.Products
             return true;
         }
 
-        public override void CheckProduct()
+        protected override void CheckProduct()
         {
             if (Quality < 0)
                 throw new Exception("Quality for wine cannot be lower than 0!");
