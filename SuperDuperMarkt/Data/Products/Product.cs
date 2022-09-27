@@ -13,8 +13,8 @@ namespace SuperDuperMarkt.Data.Products
         public DateTime DueDate { get; protected set; }
         public float FixPrice { get; protected set; }
         public DateTime DateCreated { get; protected set; }
-        private int dailyQualityModifier;
-        private int startingQuality;
+        private readonly int dailyQualityModifier;
+        private readonly int startingQuality;
         
 
         protected Product(string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
