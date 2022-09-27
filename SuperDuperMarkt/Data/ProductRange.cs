@@ -29,7 +29,7 @@ namespace SuperDuperMarkt.Data
 
         /// <summary>
         /// Prints all products for a specific <see cref="DateTime"/>.
-        /// Products with a bad quality are printed red.
+        /// Products with a bad quality are printed red. Products will not be printed red twice in a row.
         /// </summary>
         /// <param name="dateTime">The <see cref="DateTime"/> for which the products should be printed.</param>
         public void PrintRangeForDate(DateTime dateTime)
@@ -38,7 +38,10 @@ namespace SuperDuperMarkt.Data
             Console.WriteLine("---------------------");
             foreach(Product product in range)
             {
+                var oldQuality = product.IsQualityGood();
                 product.UpdateQuality(dateTime);
+                if (!oldQuality && !product.IsQualityGood())
+                    continue;
                 if(!product.IsQualityGood())
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
