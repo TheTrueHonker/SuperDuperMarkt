@@ -10,13 +10,11 @@ namespace SuperDuperMarkt.Data.Products
         public Wine(string description, float fixPrice, int quality, DateTime dateCreated) 
             : base(description, quality, DateTime.MaxValue, fixPrice, QUALITY_MODIFIER, dateCreated)
         {
-            CheckWine();
         }
 
-        public Wine(string description, float fixPrice, int quality) 
+        public Wine(string description, float fixPrice, int quality)
             : base(description, quality, DateTime.MaxValue, fixPrice, QUALITY_MODIFIER)
         {
-            CheckWine();
         }
 
         public override float GetPrice()
@@ -42,7 +40,7 @@ namespace SuperDuperMarkt.Data.Products
             return true;
         }
 
-        private void CheckWine()
+        public override void CheckProduct()
         {
             if (Quality < 0)
                 throw new Exception("Quality for wine cannot be lower than 0!");

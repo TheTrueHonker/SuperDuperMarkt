@@ -9,6 +9,7 @@ namespace SuperDuperMarkt.Data.Products
 
         public string Description { get; protected set; }
         public int Quality { get; protected set; }
+        public int DueInDays { get; protected set; }
         public DateTime DueDate { get; protected set; }
         public float FixPrice { get; protected set; }
         public DateTime DateCreated { get; protected set; }
@@ -18,6 +19,7 @@ namespace SuperDuperMarkt.Data.Products
 
         protected Product(string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
         {
+            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -29,6 +31,7 @@ namespace SuperDuperMarkt.Data.Products
 
         protected Product(string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier)
         {
+            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -40,10 +43,12 @@ namespace SuperDuperMarkt.Data.Products
 
         protected Product(string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
         {
+            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
             DueDate = dateCreated.AddDays(dueInDays);
+            DueInDays = dueInDays;
             FixPrice = fixPrice;
             DateCreated = dateCreated;
             this.dailyQualityModifier = dailyQualityModifier;
@@ -51,12 +56,14 @@ namespace SuperDuperMarkt.Data.Products
 
         protected Product(string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier)
         {
+            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
             FixPrice = fixPrice;
             DateCreated = DateTime.Now;
             DueDate = DateCreated.AddDays(dueInDays);
+            DueInDays = dueInDays;
             this.dailyQualityModifier = dailyQualityModifier;
         }
 
@@ -114,6 +121,11 @@ namespace SuperDuperMarkt.Data.Products
             Quality = startingQuality - (daysInBetween.Days * dailyQualityModifier);
             return Quality;
         }
+
+        /// <summary>
+        /// This function is called by <see cref="Product"/> in the constructor to validate the parameters.
+        /// </summary>
+        protected abstract void CheckProduct();
 
         /// <summary>
         /// Determins whether the quality of this product is still good or not.
