@@ -19,7 +19,6 @@ namespace SuperDuperMarkt.Data.Products
 
         protected Product(string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
         {
-            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -27,11 +26,11 @@ namespace SuperDuperMarkt.Data.Products
             FixPrice = fixPrice;
             DateCreated = dateCreated;
             this.dailyQualityModifier = dailyQualityModifier;
+            CheckProduct();
         }
 
         protected Product(string description, int quality, DateTime dueDate, float fixPrice, int dailyQualityModifier)
         {
-            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -39,11 +38,11 @@ namespace SuperDuperMarkt.Data.Products
             FixPrice = fixPrice;
             DateCreated = DateTime.Now;
             this.dailyQualityModifier = dailyQualityModifier;
+            CheckProduct();
         }
 
         protected Product(string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier, DateTime dateCreated)
         {
-            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -52,11 +51,11 @@ namespace SuperDuperMarkt.Data.Products
             FixPrice = fixPrice;
             DateCreated = dateCreated;
             this.dailyQualityModifier = dailyQualityModifier;
+            CheckProduct();
         }
 
         protected Product(string description, int quality, int dueInDays, float fixPrice, int dailyQualityModifier)
         {
-            CheckProduct();
             Description = description;
             Quality = quality;
             startingQuality = quality;
@@ -65,6 +64,7 @@ namespace SuperDuperMarkt.Data.Products
             DueDate = DateCreated.AddDays(dueInDays);
             DueInDays = dueInDays;
             this.dailyQualityModifier = dailyQualityModifier;
+            CheckProduct();
         }
 
         public override string ToString()
