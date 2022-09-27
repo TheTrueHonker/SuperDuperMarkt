@@ -17,6 +17,11 @@ namespace SuperDuperMarkt.Data.ProductImports
             this.path = path;
         }
 
+        /// <summary>
+        /// Creats an instance of the class <see cref="CSVImporter"/> by asking the user for a file path via console.
+        /// Asks as long as a path with a valid file is entered. 
+        /// </summary>
+        /// <returns>An instance of <see cref="CSVImporter"/> with a valid path.</returns>
         public static CSVImporter CreateCSVImporterWithDialog()
         {
             string path;
@@ -26,7 +31,8 @@ namespace SuperDuperMarkt.Data.ProductImports
                 path = Console.ReadLine();
                 if (!File.Exists(path))
                     Console.WriteLine($"File does not exist: \"{path}\"");
-
+                if (Path.GetExtension(path) != ".csv")
+                    Console.WriteLine("File must have an extension of \".csv\"");
             } while (!File.Exists(path));
             return new CSVImporter(path);
         }
@@ -64,6 +70,11 @@ namespace SuperDuperMarkt.Data.ProductImports
             return products;
         }
 
+        /// <summary>
+        /// Converts a line from a valid csv-file to a <see cref="Product"/> object
+        /// </summary>
+        /// <param name="line">A singular data line from the csv-file</param>
+        /// <returns>A child of <see cref="Product"/></returns>
         private Product ConvertLineToProduct(string line)
         {
             var parameters = GetLineParameters(line);
@@ -91,6 +102,11 @@ namespace SuperDuperMarkt.Data.ProductImports
             }
         }
 
+        /// <summary>
+        /// Gets all parameters from a singular line of a csv-file
+        /// </summary>
+        /// <param name="line">A singular line from the csv-file</param>
+        /// <returns>A <see cref="Dictionary{CSV_Parameter, string}"/> with all parameters</returns>
         private Dictionary<CSV_Parameter, string> GetLineParameters(string line)
         {
             var dict = new Dictionary<CSV_Parameter, string>();
