@@ -20,14 +20,14 @@ namespace SuperDuperMarkt
             {
                 var products = new List<Product>
                 {
-                    new Cheese("Cheddar", 1.76f, 31, 50),
+                    new Cheese("Cheddar", 1.76f, 52, 50),
                     new Wine("Red Wine", 46f, 1)
                 };
                 range.ImportRangeList(products);
             }
             
             range.PrintRangeForDate(DateTime.Now);
-            for(int i = 1; i <= 5; i++)
+            for(int i = 1; i <= 30; i++)
             {
                 range.PrintRangeForDate(DateTime.Now.AddDays(i));
             }
